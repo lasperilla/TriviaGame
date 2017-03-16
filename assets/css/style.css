@@ -1,0 +1,44 @@
+body {
+	background-image: url('../images/img_bg.jpg');
+}
+
+.game-window {
+	margin-top: 50px;
+	/*background-color: #FFFF00;*/
+	padding: 35px;
+	background-color: #FFFFFF;
+	border-radius: 10px;
+	box-shadow: -10px -10px 25px 2px  #888888 inset;
+	animation: myanimate 2.5s;
+}
+
+.start-screen p {
+	color: white;
+	font-size: 80px;
+	background: red;
+	margin-bottom: 30px;
+}
+
+.trivia-body {
+	color: white;
+	font-size: 20px;
+	background: red;
+	display: none;
+}
+
+footer {
+	color: white;
+	background: #E90604;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	padding-top: 5px;
+}
+
+@keyframes myanimate {
+	from {opacity: 0;}
+	to {opacity: 1;}
+/*  	from {box-shadow: 10px -10px 50px 10px  #888888 inset;}
+  	to {box-shadow: -10px -10px 25px 2px  #888888 inset;}*/
+}
