@@ -1,33 +1,23 @@
-$(document).ready(function(){
-
-	function start() {
-		$('.my-start-btn').css({'display' : 'none'});
-		$('.trivia-body').css({'display' : 'block'});
-	}
-
+window.onload = function() {
 	$('.my-start-btn').click(start);
+};
 
-	var timeLeft;
+var timeLeft = 10;
 
-	var timer = {
-
-		time : 120,
-		decrement : function(){
-			time--;
+function start() {
+	$('.my-start-btn').css({'display' : 'none'});
+	$('.trivia-body').css({'display' : 'block'});
+	$('.trivia-body').html('<h1>Time Remaining: '+timeLeft+' Seconds</h1>');
+	function decrement() {
+		timeLeft--;
+		console.log(timeLeft);
+		var printMe = '<h1>Time Remaining: '+timeLeft+' Seconds</h1>';
+		$('.trivia-body').html(printMe);
+		if (timeLeft===0) {
+			clearInterval(timer);
 		}
-		start : function(){
-			while(time >=0) {
-				timeLeft = setInterval(timer.decrement, 1000)
-			}
-		}
-
-
 	}
 
+	var timer = setInterval(decrement,1000)
+}
 
-
-
-
-
-
-});
