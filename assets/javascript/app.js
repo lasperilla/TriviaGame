@@ -1,9 +1,9 @@
 window.onload = function() {
     $('.my-start-btn').click(start);
-    $
 };
 
-var timeLeft = 10;
+var timeLeft = 5;
+var userAnswersArr = [];
 
 //array of objects, one object per Q&A
 var triviaArr = [{
@@ -96,11 +96,21 @@ function start() {
     //timer
     function decrement() {
         timeLeft--;
-        console.log(timeLeft);
+        // console.log(timeLeft);
         var printMe = 'Time Remaining: ' + timeLeft + ' Seconds';
         $('.trivia-body h1').html(printMe);
         if (timeLeft === 0) {
             clearInterval(timer);
+            	alert('time');
+
+	for (var i = 0; i < triviaArr.length; i++) {
+
+		var groupName = 'group '+i
+		var result = $('input[name='+groupName+']:checked').val();
+console.log(result);
+		
+	}
+
         }
     }
 
@@ -108,30 +118,46 @@ function start() {
 
     //for length of our array containing our trivia, creat i number of sets of questions and answers, format them
     //the way we want them displayed on the page, then push them in our questions div
-	function makeRadioButtons(array) {
-		for (var i = 0; i < array.length; i++) {
-			$('.questions').append('<input type="radio" name="question '+array+'" value="'+array[i]+'"> '+array[i]+ '  ');
-		};
-	};
+	// function makeRadioButtons(array) {
+
+	// };
 
     for (var i = 0; i < triviaArr.length; i++) {
-
     	var html = '<div><p><h2>'+triviaArr[i].question+ '</h2></p>';
-    	console.log(html)
+    	// console.log(html)
     	$(".questions").append(html);
-    	makeRadioButtons(shuffledAnswerArr[i]);
+
+		for (var j = 0; j < shuffledAnswerArr[i].length; j++) {
+		$('.questions').append('<input type="radio" name="group'+i+'" value="'+shuffledAnswerArr[i][j]+'"> '+shuffledAnswerArr[i][j]+ '  ');
+		// $('input[name="'+array+'"]').attr("group", i);
+		};
+
+    	// makeRadioButtons(shuffledAnswerArr[i]);
+
     };
 
 };//end of start()
 
-//get value of radiobutton clicked
-// $("")
+//When timer is done, evaluate answers and score
+// if (timeLeft === 0) {
+// 	alert('time');
 
-for (var i = 0; i < shuffledAnswerArr.length; i++) {
-	var groupName = 'question shuffledAnswerArr['+i+']';
-	$('input[name=name_of_your_radiobutton]:checked').val();
+// 	for (var i = 0; i < triviaArr.length; i++) {
+
+// 		var groupName = 'group '+i
+// console.log("$('input[name="+groupName+"]:checked').val();")
+		
+// 	}
+
+// };
+
+
+
+// for (var i = 0; i < shuffledAnswerArr.length; i++) {
+// 	var groupName = 'question shuffledAnswerArr['+i+']';
+// 	$('input[name=name_of_your_radiobutton]:checked').val();
 	
-}
+// }
 
 
 
