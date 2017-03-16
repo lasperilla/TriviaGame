@@ -4,12 +4,14 @@ body {
 
 .game-window {
 	margin-top: 50px;
+	margin-bottom: 50px;
 	/*background-color: #FFFF00;*/
 	padding: 35px;
 	background-color: #FFFFFF;
 	border-radius: 10px;
 	box-shadow: -10px -10px 25px 2px  #888888 inset;
 	animation: myanimate 2.5s;
+
 }
 
 .start-screen p {
@@ -20,8 +22,9 @@ body {
 }
 
 .trivia-body {
+	padding: 20px 0 20px 0;
 	color: white;
-	font-size: 20px;
+	font-size: 25px;
 	background: red;
 	display: none;
 }
@@ -31,9 +34,10 @@ footer {
 	background: #E90604;
 	width: 100%;
 	position: absolute;
-	bottom: 0;
+	bottom: 0px;
 	text-align: center;
 	padding-top: 5px;
+	/*margin-top: 40px;*/
 }
 
 @keyframes myanimate {
