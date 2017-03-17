@@ -46,3 +46,22 @@ footer {
 /*  	from {box-shadow: 10px -10px 50px 10px  #888888 inset;}
   	to {box-shadow: -10px -10px 25px 2px  #888888 inset;}*/
 }
+
+@keyframes lose {
+	from {color: #791812;}
+	to {color: #420D09;}
+}
+
+@keyframes win {
+	from {color: #FFDF00;}
+	to {color: #FFFF00;}
+}
+
+.incorrect {
+	color: #420D09;
+	animation: lose 3.5s infinite;
+}
+
+.correct {
+	animation: win 3.5s infinite;
+}

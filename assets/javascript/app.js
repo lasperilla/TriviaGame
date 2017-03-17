@@ -2,7 +2,7 @@ window.onload = function() {
     $('.my-start-btn').click(start);
 };
 
-var timeLeft = 30;
+var timeLeft = 10;
 var userAnswersArr = [];
 var correctAnswers = 0;
 var incorrectAnswers = 0;
@@ -103,6 +103,7 @@ function start() {
         var printMe = 'Time Remaining: ' + timeLeft + ' Seconds';
         $('.trivia-body h1').html(printMe);
         if (timeLeft === 0) {
+        	$('.trivia-body h1').css({ 'display': 'none' })
             clearInterval(timer);
             	// alert('time');
 
@@ -125,19 +126,19 @@ function start() {
 			}
 
 			$('.trivia-body').html("<h1>Results:<h1>"+ "<p>Correct Answers: "+correctAnswers+"</p>"+"<p>Incorrect Answers: "+incorrectAnswers+"</p>"+"<p>Unanswered Questions: "+unanswered+"</p>")
+			//alternate results if you get all right or if you get all wrong
 			if (correctAnswers === triviaArr.length) {
-				$('.trivia-body').prepend('<div><iframe width="374" height="210" src="https://www.youtube.com/embed/oe2Gcuu8mEE?autoplay=1" frameborder="0" allowfullscreen></iframe></div>')
+				$('.trivia-body').html('<div><iframe width="374" height="210" src="https://www.youtube.com/embed/oe2Gcuu8mEE?autoplay=1" frameborder="0" allowfullscreen></iframe></div>'+"<h1>Great Job! Results:<h1>"+ "<p class=\"correct\">Correct Answers: "+correctAnswers+"</p>"+"<p>Incorrect Answers: "+incorrectAnswers+"</p>"+"<p>Unanswered Questions: "+unanswered+"</p>")
+			} else if (incorrectAnswers === triviaArr.length) {
+				$('.trivia-body').html('<div><iframe width="374" height="210" src="https://www.youtube.com/embed/O4buGpzS-2k?autoplay=1" frameborder="0" allowfullscreen></iframe></div>'+"<h1>Get some sleep and try again tomorrow. Results:<h1>"+ "<p>Correct Answers: "+correctAnswers+"</p>"+"<p class=\"incorrect\">Incorrect Answers: "+incorrectAnswers+"</p>"+"<p>Unanswered Questions: "+unanswered+"</p>")
 			}
         }
     }
 
     var timer = setInterval(decrement, 1000);
 
-    //for length of our array containing our trivia, creat i number of sets of questions and answers, format them
-    //the way we want them displayed on the page, then push them in our questions div
-	// function makeRadioButtons(array) {
+    //for length of our array containing our trivia, creat i number of sets of questions and answers, format them the way we want them displayed on the page, then push them in our questions div
 
-	// };
 
     for (var i = 0; i < triviaArr.length; i++) {
     	var html = '<div><p><h2>'+triviaArr[i].question+ '</h2></p>';
@@ -145,7 +146,7 @@ function start() {
     	$(".questions").append(html);
 
 		for (var j = 0; j < shuffledAnswerArr[i].length; j++) {
-		$('.questions').append('<input type="radio" data-group="question'+eval(i+1)+'" value="'+shuffledAnswerArr[i][j]+'"> '+shuffledAnswerArr[i][j]+ '  ');
+		$('.questions').append('<input type="radio" name="'+shuffledAnswerArr[i]+'" data-group="question'+eval(i+1)+'" value="'+shuffledAnswerArr[i][j]+'"> '+shuffledAnswerArr[i][j]+ '  ');
 		// $('input[name="'+array+'"]').attr("group", i);
 		};
 
@@ -154,27 +155,5 @@ function start() {
     };
 
 };//end of start()
-
-//When timer is done, evaluate answers and score
-// if (timeLeft === 0) {
-// 	alert('time');
-
-// 	for (var i = 0; i < triviaArr.length; i++) {
-
-// 		var groupName = 'group '+i
-// console.log("$('input[name="+groupName+"]:checked').val();")
-		
-// 	}
-
-// };
-
-
-
-// for (var i = 0; i < shuffledAnswerArr.length; i++) {
-// 	var groupName = 'question shuffledAnswerArr['+i+']';
-// 	$('input[name=name_of_your_radiobutton]:checked').val();
-	
-// }
-
 
 
