@@ -2,7 +2,7 @@ window.onload = function() {
     $('.my-start-btn').click(start);
 };
 
-var timeGiven = 10;
+var timeGiven = 30;
 var userAnswersArr = [];
 var correctAnswers = 0;
 var incorrectAnswers = 0;
