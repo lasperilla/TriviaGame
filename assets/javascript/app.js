@@ -105,8 +105,8 @@ function start() {
 
 	for (var i = 0; i < triviaArr.length; i++) {
 
-		var groupName = 'group '+i
-		var result = $('input[name='+groupName+']:checked').val();
+		var groupName = 'question'+eval(i+1)
+		var result = $('input[data-group="'+groupName+'"]:checked').val();
 console.log(result);
 		
 	}
@@ -128,7 +128,7 @@ console.log(result);
     	$(".questions").append(html);
 
 		for (var j = 0; j < shuffledAnswerArr[i].length; j++) {
-		$('.questions').append('<input type="radio" name="group'+i+'" value="'+shuffledAnswerArr[i][j]+'"> '+shuffledAnswerArr[i][j]+ '  ');
+		$('.questions').append('<input type="radio" data-group="question'+eval(i+1)+'" value="'+shuffledAnswerArr[i][j]+'"> '+shuffledAnswerArr[i][j]+ '  ');
 		// $('input[name="'+array+'"]').attr("group", i);
 		};
 
