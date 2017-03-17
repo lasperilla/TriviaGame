@@ -2,8 +2,11 @@ window.onload = function() {
     $('.my-start-btn').click(start);
 };
 
-var timeLeft = 5;
+var timeLeft = 30;
 var userAnswersArr = [];
+var correctAnswers = 0;
+var incorrectAnswers = 0;
+var unanswered = 0;
 
 //array of objects, one object per Q&A
 var triviaArr = [{
@@ -101,16 +104,30 @@ function start() {
         $('.trivia-body h1').html(printMe);
         if (timeLeft === 0) {
             clearInterval(timer);
-            	alert('time');
+            	// alert('time');
 
-	for (var i = 0; i < triviaArr.length; i++) {
+			for (var i = 0; i < triviaArr.length; i++) {
 
-		var groupName = 'question'+eval(i+1)
-		var result = $('input[data-group="'+groupName+'"]:checked').val();
-console.log(result);
-		
-	}
+				var groupName = 'question'+eval(i+1);
+				var result = $('input[data-group="'+groupName+'"]:checked').val();
+				userAnswersArr.push(result);
+				console.log(userAnswersArr);
+			}
 
+			for (var i = 0; i < triviaArr.length; i++) {
+				if (triviaArr[i].answer === userAnswersArr[i]) {
+					correctAnswers++;
+				} else if (userAnswersArr[i] === undefined) {
+					unanswered++;
+				} else {
+					incorrectAnswers++;
+				}
+			}
+
+			$('.trivia-body').html("<h1>Results:<h1>"+ "<p>Correct Answers: "+correctAnswers+"</p>"+"<p>Incorrect Answers: "+incorrectAnswers+"</p>"+"<p>Unanswered Questions: "+unanswered+"</p>")
+			if (correctAnswers === triviaArr.length) {
+				$('.trivia-body').prepend('<div><iframe width="374" height="210" src="https://www.youtube.com/embed/oe2Gcuu8mEE?autoplay=1" frameborder="0" allowfullscreen></iframe></div>')
+			}
         }
     }
 
